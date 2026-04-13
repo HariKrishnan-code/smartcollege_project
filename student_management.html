@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Management</title>
+
+<link rel="stylesheet" href="student_management.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>🎓 Student Management</h1>
+        <button class="add-btn" onclick="openForm()">+ Add Student</button>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="search-box">
+        <input type="text" id="search" placeholder="Search student..." onkeyup="searchStudent()">
+    </div>
+
+    <!-- ANALYTICS -->
+<div class="analytics">
+
+    <div class="box">
+        <h3 id="totalStudents">0</h3>
+        <p>Total Students</p>
+    </div>
+
+    <div class="box">
+        <h3 id="activeStudents">0</h3>
+        <p>Active Students</p>
+    </div>
+
+    <div class="box">
+        <h3 id="inactiveStudents">0</h3>
+        <p>Inactive Students</p>
+    </div>
+
+</div>
+
+<!-- CHARTS -->
+<div class="charts">
+    <canvas id="statusChart"></canvas>
+    <canvas id="deptChart"></canvas>
+</div>
+
+
+    <!-- TABLE -->
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+</div>
+
+<!-- POPUP FORM -->
+<div class="popup" id="popup">
+    <div class="form-box">
+        <h2 id="formTitle">Add Student</h2>
+
+        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="dept" placeholder="Department">
+        <input type="email" id="email" placeholder="Email">
+
+        <select id="status">
+            <option>Active</option>
+            <option>Inactive</option>
+        </select>
+
+        <button onclick="saveStudent()">Save</button>
+        <button onclick="closeForm()">Cancel</button>
+    </div>
+</div>
+
+<script src="student_management.js"></script>
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</body>
+</html>

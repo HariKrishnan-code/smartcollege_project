@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #141e30, #243b55);
+    color: white;
+    padding: 20px;
+}
+
+/* CONTAINER */
+.container {
+    background: rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+/* CARDS */
+.cards {
+    display: flex;
+    gap: 10px;
+}
+
+.card {
+    flex: 1;
+    background: rgba(255,255,255,0.2);
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+/* CHART */
+.chart-box {
+    width: 250px;
+    height: 250px;
+    margin: 20px auto;
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+th {
+    background: rgba(255,255,255,0.3);
+}
+
+th, td {
+    padding: 10px;
+}
+
+button {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pay { background: #00c853; color: white; }
+.receipt { background: #2962ff; color: white; }
+
+/* POPUP */
+.popup {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+
+.form {
+    background: white;
+    color: black;
+    padding: 20px;
+    width: 300px;
+    margin: 100px auto;
+    border-radius: 10px;
+}
+
+.form input {
+    width: 100%;
+    margin: 10px 0;
+    padding: 8px;
+}
+/* TABLE SCROLL */
+.table-container {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+/* POPUP BACKGROUND */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.6);
+
+    /* 🔥 CENTER ALIGN */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* FORM (CARD) */
+.form {
+    background: white;
+    color: black;
+    padding: 25px;
+    width: 320px;
+    border-radius: 12px;
+    text-align: center;
+
+    /* ANIMATION */
+    transform: scale(0.8);
+    transition: 0.3s;
+}
+.popup.active .form {
+    transform: scale(1);
+}
+.add-fee {
+    background: #ff9800;
+    color: white;
+}
+
+.pay-fee {
+    background: #00c853;
+    color: white;
+}

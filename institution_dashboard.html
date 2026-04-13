@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Institution Dashboard</title>
+
+<link rel="stylesheet" href="institution_dashboard.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar glass">
+        <h2>🏫 SCS</h2>
+
+        <ul>
+            <li onclick="link0()">🎓 Students</li>
+            <li onclick="link1()">👨‍🏫 Staffs</li>
+            <li onclick="link2()">📘 Fees</li>
+            <li onclick="link3()">📊 Reports</li>
+            <li onclick="link4()">📊 About</li>
+            <li onclick="logout()">🚪 Logout</li>
+        </ul>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main" id="content">
+
+        <!-- TOPBAR -->
+        <div class="topbar glass">
+            <h2>Welcome Admin 📊</h2>
+            <div>
+                <input type="text" placeholder="Search...">
+                <button onclick="toggleTheme()" style="background-color: black; color: white;border-radius: 10px;margin-left: 20px;margin-right: 20px; padding: 10px;">🌙dark</button>
+            </div>
+        </div>
+
+        <!-- CARDS -->
+        <div class="cards">
+            <div class="card glass c1">1200<br><span>Students</span></div>
+            <div class="card glass c2">85<br><span>Staffs</span></div>
+            <div class="card glass c3">45<br><span>Courses</span></div>
+            <div class="card glass c4">12<br><span>Departments</span></div>
+        </div>
+
+        <!-- CHARTS -->
+        <div class="charts">
+            <div class="chart-box glass">
+                <h3>Student Growth</h3>
+                <canvas id="barChart"></canvas>
+            </div>
+
+            <div class="chart-box glass">
+                <h3>Department Split</h3>
+                <canvas id="pieChart"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="institution_dashboard.js"></script>
+
+</body>
+</html>

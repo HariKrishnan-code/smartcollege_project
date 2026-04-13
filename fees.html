@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Fees Dashboard</title>
+
+<link rel="stylesheet" href="fees.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+<body>
+
+<div class="container">
+
+    <h1>💰 Fees Dashboard</h1>
+
+    <!-- SUMMARY -->
+    <div class="cards">
+        <div class="card"><h3 id="total"></h3><p>Total</p></div>
+        <div class="card"><h3 id="paid"></h3><p>Paid</p></div>
+        <div class="card"><h3 id="due"></h3><p>Due</p></div>
+    </div>
+
+    <!-- CHART -->
+    <div class="chart-box">
+        <canvas id="chart"></canvas>
+    </div>
+
+    <button onclick="openAddStudent()">➕ Add Student</button>
+
+<div class="table-container">
+    <table id="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Total</th>
+                <th>Paid</th>
+                <th>Due</th>
+                <th>Pay</th>
+                <th>Receipt</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+
+<div class="popup" id="addFeePopup">
+    <div class="form">
+        <h2>➕ Add Fee</h2>
+
+        <input type="text" id="addName" readonly>
+        <input type="number" id="addAmount" placeholder="Enter Fee Amount">
+
+        <button onclick="addFee()">Add Fee</button>
+        <button onclick="closeAddFee()">Cancel</button>
+    </div>
+</div>
+
+<div class="popup" id="payPopup">
+    <div class="form">
+        <h2>💳 Pay Fee</h2>
+
+        <input type="text" id="payName" readonly>
+        <input type="number" id="payAmount" placeholder="Enter Payment Amount">
+
+        <button onclick="payFee()">Pay Now</button>
+        <button onclick="closePay()">Cancel</button>
+    </div>
+</div>
+
+
+<!-- PAYMENT POPUP -->
+<div class="popup" id="popup">
+    <div class="form">
+        <h2>💳 Payment</h2>
+
+        <input type="text" id="pname" readonly>
+        <input type="number" id="amount" placeholder="Enter Amount">
+
+        <button onclick="pay()">Pay Now</button>
+        <button onclick="closePop()">Cancel</button>
+    </div>
+</div>
+
+<div class="popup" id="addPopup">
+    <div class="form">
+        <h2>➕ Add Student</h2>
+
+        <input type="text" id="sname" placeholder="Student Name">
+        <input type="number" id="stotal" placeholder="Total Fees">
+
+        <button onclick="addStudent()">Add</button>
+        <button onclick="closeAdd()">Cancel</button>
+    </div>
+</div>
+
+<script src="fees.js"></script>
+
+</body>
+</html>

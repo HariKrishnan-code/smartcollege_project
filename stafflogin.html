@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Login Portal</title>
+    <link rel="stylesheet" href="staffcss.css">
+</head>
+<body>
+
+    <div class="overlay"></div>
+
+    <div class="login-box">
+        <h1>Staff Login Portal</h1>
+
+        <form>
+            <div class="input-box">
+                <input type="text" placeholder="Staff ID / Username" required>
+            </div>
+
+            <div class="input-box">
+                <input type="password" placeholder="Password" required>
+            </div>
+
+            <div class="options">
+                <label><input type="checkbox"> Remember Me</label>
+                <a href="staff forget password.html">Forgot Password?</a>
+            </div>
+
+            <button onclick="gostaffdashboard()" type="submit">Log in</button>
+
+            <p class="register">
+                Need access? <a href="staff_register.html">REGISTER</a>
+            </p>
+        </form>
+    </div>
+    <script>
+        function gostaffdashboard() {
+            window.location.href = "staff_dashboard.html"; // your staff dashboard page
+        } </script>
+        
+</body>
+</html>

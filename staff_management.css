@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(135deg, #1e1f4b, #3a3dbf);
+    padding: 20px;
+    color: white;
+}
+
+.container {
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* BUTTON */
+button {
+    background: #6c63ff;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* SEARCH */
+#search {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+}
+
+/* ANALYTICS */
+.analytics {
+    display: flex;
+    gap: 10px;
+}
+
+.box {
+    flex: 1;
+    background: #6c63ff;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+/* CHARTS */
+.charts {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+canvas {
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #6c63ff;
+    color: white;
+}
+
+th, td {
+    padding: 10px;
+}
+
+tr {
+    border-bottom: 1px solid #ccc;
+}
+
+.active { color: green; }
+.inactive { color: red; }
+
+/* POPUP */
+.popup {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    top: 0;
+}
+
+.form-box {
+    background: white;
+    padding: 20px;
+    width: 300px;
+    margin: 100px auto;
+    border-radius: 10px;
+}
+
+.form-box input, select {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+}
+.charts {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas {
+    max-width: 300px;
+    max-height: 300px;
+    margin: auto;
+}

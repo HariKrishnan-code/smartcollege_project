@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart College Dashboard</title>
+    <link rel="stylesheet" href="website_dashboard.css">
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo-container">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="logo">
+            <h1>Smart College System</h1>
+            <img src="https://cdn-icons-png.flaticon.com/512/2995/2995465.png"  class="logo">
+        </div>
+    </header>
+
+    <!-- MAIN SECTION -->
+    <main>
+        <div class="card-container">
+
+            <!-- STUDENT -->
+            <div class="card1" onclick="goStudent()">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png" alt="Student">
+                <h2>Student Portal</h2>
+                <p>Access assignments, records & services</p>
+            </div>
+
+            <!-- STAFF -->
+            <div class="card2" onclick="goStaff()">
+                <img src="https://cdn-icons-png.flaticon.com/512/1995/1995574.png" alt="Staff">
+                <h2>Staff Portal</h2>
+                <p>Manage students, records & reports</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Smart College System</p>
+        <div class="footer-links">
+            <a href="#">About</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Contact</a>
+        </div>
+    </footer>
+
+    <script>
+        function goStudent() {
+            window.location.href = "studentlogin.html"; // your student login page
+        }
+
+        function goStaff() {
+            window.location.href = "stafflogin.html";
+        }
+    </script>
+    hi this is a test
+
+</body>
+</html>

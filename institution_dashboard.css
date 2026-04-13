@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+     background: linear-gradient(rgb(202, 123, 53), #5aa534);
+}
+
+/* GLASS EFFECT */
+.glass {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    color: white;
+}
+
+/* LAYOUT */
+.dashboard {
+    display: flex;
+    height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 220px;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+}
+
+.sidebar li {
+    padding: 12px;
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.sidebar li:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* MAIN */
+.main {
+    flex: 1;
+    padding: 20px;
+}
+
+/* TOPBAR */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.topbar input {
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+}
+
+/* CARDS */
+.cards {
+    display: flex;
+    gap: 15px;
+}
+
+.card {
+    flex: 1;
+    padding: 25px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.card span {
+    display: block;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+/* CARD COLORS */
+.c1 { background: linear-gradient(45deg, #ff6b6b, #ff8787); }
+.c2 { background: linear-gradient(45deg, #4dabf7, #74c0fc); }
+.c3 { background: linear-gradient(45deg, #51cf66, #69db7c); }
+.c4 { background: linear-gradient(45deg, #845ef7, #9775fa); }
+
+/* HOVER EFFECT */
+.card:hover {
+    transform: translateY(-10px) scale(1.05);
+}
+
+/* CHARTS */
+.charts {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.chart-box {
+    flex: 1;
+    padding: 20px;
+}
+
+canvas {
+    height: 220px !important;
+}
+
+/* DARK MODE */
+.dark {
+    background: #121212;
+    color: white;
+}
+
+h1, h2, h3, p, span, a, li {
+  color: white;
+text-shadow: 0 0 10px white;
+}
+
+h2 {
+    color: #000000;
+    text-shadow: 0 0 10px #000000;
+}

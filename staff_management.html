@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff Management</title>
+
+<link rel="stylesheet" href="staff_management.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <h1>👨‍🏫 Staff Management</h1>
+        <button onclick="openForm()">+ Add Staff</button>
+    </div>
+
+    <!-- SEARCH -->
+    <input type="text" id="search" placeholder="Search staff..." onkeyup="searchStaff()">
+
+    <!-- ANALYTICS -->
+    <div class="analytics">
+        <div class="box"><h3 id="total">0</h3><p>Total</p></div>
+        <div class="box"><h3 id="active">0</h3><p>Active</p></div>
+        <div class="box"><h3 id="inactive">0</h3><p>Inactive</p></div>
+    </div>
+
+    <!-- CHARTS -->
+    <div class="charts">
+        <canvas id="statusChart"></canvas>
+        <canvas id="deptChart"></canvas>
+    </div>
+
+    <!-- TABLE -->
+    <table id="staffTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+    <div class="form-box">
+        <h2>Add Staff</h2>
+
+        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="dept" placeholder="Department">
+        <input type="email" id="email" placeholder="Email">
+
+        <select id="status">
+            <option>Active</option>
+            <option>Inactive</option>
+        </select>
+
+        <button onclick="saveStaff()">Save</button>
+        <button onclick="closeForm()">Cancel</button>
+    </div>
+</div>
+
+<script src="staff_management.js"></script>
+
+</body>
+</html>

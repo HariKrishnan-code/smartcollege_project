@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart College Dashboard</title>
+
+<link rel="stylesheet" href="mainpage.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- FLOATING ICONS -->
+<div class="icons">
+    <span>🎓</span>
+    <span>📚</span>
+    <span>🧠</span>
+    <span>📊</span>
+    <span>💻</span>
+</div>
+
+<!-- HEADER -->
+<header>
+    <div class="logo-container">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="logo">
+        <h1>SMART COLLEGE SYSTEM</h1>
+    </div>
+
+    <button class="toggle" onclick="toggleTheme()" style="background-color: white; color: black;">☀️DARK</button>
+</header>
+
+<!-- MAIN -->
+<main>
+    <div class="card-container">
+
+        <!-- STUDENT -->
+        <div class="card student" onclick="goStudent()">
+            <div class="badge">3</div>
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135755.png">
+            <h2>Student Portal</h2>
+            <p>Assignments & Records</p>
+
+            <div class="preview">
+                📄 Assignments: 3 <br>
+                📊 Attendance: 92% <br>
+                📝 Exams: Upcoming
+            </div>
+        </div>
+        
+        <!-- INSTITUTION LOGIN (NEW) -->
+        <div class="card institution" onclick="goInstitution()">
+            <div class="badge">New</div>
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135789.png">
+            <h2>Institution Login</h2>
+            <p>Access Admin / Staff Controls</p>
+
+        <div class="preview">
+            🏫 Manage College <br>
+            👨‍🏫 Staff Control <br>
+            🔐 Secure Access
+        </div>
+    </div>
+
+        <!-- STAFF -->
+        <div class="card staff" onclick="goStaff()">
+            <div class="badge">5</div>
+            <img src="https://cdn-icons-png.flaticon.com/512/1995/1995574.png">
+            <h2>Staff Portal</h2>
+            <p>Manage Students & Reports</p>
+
+            <div class="preview">
+                👨‍🎓 Students: 120 <br>
+                📄 Pending: 5 <br>
+                ⚠ Alerts: 1 Fraud
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Smart College System</p>
+    <div class="footer-links">
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</footer>
+
+<!-- LOADER -->
+<div class="loader" id="loader">Loading...</div>
+
+<script src="mainpage.js"></script>
+
+</body>
+</html>

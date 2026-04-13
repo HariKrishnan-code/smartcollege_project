@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff Registration</title>
+<link rel="stylesheet" href="staff register.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Staff Registration</h1>
+
+    <form>
+
+        <input type="text" placeholder="Full Name" required>
+        <input type="text" placeholder="Staff User ID" required>
+        <input type="text" placeholder="Department" required>
+        <input type="text" placeholder="Subject Handling" required>
+        <input type="tel" placeholder="Phone Number" required>
+
+        <input type="text" placeholder="Username" required>
+        <input type="password" placeholder="Password" id="spass" required>
+        <input type="password" placeholder="Re-enter Password" id="srepass" required>
+
+        <button type="button" onclick="sendHODOTP()">Send Approval OTP</button>
+
+        <div id="hodOtpBox" style="display:none;">
+            <input type="text" placeholder="Enter HOD OTP">
+            <a href="stafflogin.html" class="btn">Register</a>
+        </div>
+
+    </form>
+</div>
+
+<script>
+function sendHODOTP() {
+    alert("OTP sent to HOD (simulation)");
+    document.getElementById("hodOtpBox").style.display = "block";
+}
+
+function staffRegister() {
+    let p = document.getElementById("spass").value;
+    let rp = document.getElementById("srepass").value;
+
+    if(p !== rp){
+        alert("Passwords do not match!");
+        return false;
+    }
+
+    alert("Staff Login ID Approved & Created!");
+    return true;
+
+}
+</script>
+
+</body>
+</html>

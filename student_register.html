@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Registration</title>
+
+<!-- LINK CSS FILE -->
+<link rel="stylesheet" href="student register.css">
+
+</head>
+<body>
+
+<div class="container">
+    <h1>Student Registration</h1>
+
+    <form id="regForm">
+
+        <input type="text" id="name" placeholder="Full Name" required>
+        <input type="text" id="reg_no" placeholder="Register Number" required>
+        <input type="text" id="roll_no" placeholder="Roll Number" required>
+        <input type="email" id="email" placeholder="Email ID" required>
+        <input type="text" id="class" placeholder="Class / Standard" required>
+        <input type="text" id="degree" placeholder="Degree" required>
+        <input type="text" id="department" placeholder="Department" required>
+        <input type="text" id="hod_name" placeholder="HOD Name" required>
+        <input type="text" id="advisor_name" placeholder="Class Advisor Name" required>
+        <input type="tel" id="phone" placeholder="Phone Number" required>
+
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="pass" placeholder="Password" required>
+        <input type="password" id="repass" placeholder="Re-enter Password" required>
+
+        <button type="button" onclick="studentlogin()">Register</button>
+
+    </form>
+</div>
+
+<script>
+function studentlogin() {
+    window.location.href = "studentlogin.html";
+}
+</script>
+
+</body>
+</html>

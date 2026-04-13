@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Performance Dashboard</title>
+    <link rel="stylesheet" href="ins_report.css">
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<header>
+    <h1>Student Performance Dashboard</h1>
+</header>
+
+<!-- Filter -->
+<section class="filter">
+    <label>Select Class:</label>
+    <select id="classFilter">
+        <option value="all">All</option>
+        <option value="CSE-A">CSE-A</option>
+        <option value="CSE-B">CSE-B</option>
+        <option value="ECE">ECE</option>
+    </select>
+</section>
+
+<!-- Stats -->
+<section class="stats">
+    <div class="card">
+        <h3>Total Students</h3>
+        <p>300</p>
+    </div>
+    <div class="card">
+        <h3>Average Score</h3>
+        <p>78%</p>
+    </div>
+    <div class="card">
+        <h3>Pass Rate</h3>
+        <p>90%</p>
+    </div>
+</section>
+
+<!-- Chart -->
+<section class="chart-container">
+    <canvas id="myChart"></canvas>
+</section>
+
+<!-- Add this inside your body (below existing chart section) -->
+
+<section class="chart-container">
+    <h2>Subject-wise Performance</h2>
+    <canvas id="subjectChart"></canvas>
+</section>
+
+<!-- Subject Table -->
+<section class="table-section">
+    <h2>Subject-wise Marks</h2>
+    <table id="subjectTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Class</th>
+                <th>Math</th>
+                <th>Physics</th>
+                <th>CS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-class="CSE-A">
+                <td>Arun</td>
+                <td>CSE-A</td>
+                <td>85</td>
+                <td>78</td>
+                <td>90</td>
+            </tr>
+            <tr data-class="CSE-B">
+                <td>Kiran</td>
+                <td>CSE-B</td>
+                <td>70</td>
+                <td>68</td>
+                <td>75</td>
+            </tr>
+            <tr data-class="ECE">
+                <td>Rahul</td>
+                <td>ECE</td>
+                <td>60</td>
+                <td>72</td>
+                <td>65</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- Table -->
+<section class="table-section">
+    <h2>Student Report Table</h2>
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Class</th>
+                <th>Marks</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-class="CSE-A">
+                <td>Arun</td>
+                <td>CSE-A</td>
+                <td>85</td>
+                <td>Pass</td>
+            </tr>
+            <tr data-class="CSE-B">
+                <td>Kiran</td>
+                <td>CSE-B</td>
+                <td>72</td>
+                <td>Pass</td>
+            </tr>
+            <tr data-class="ECE">
+                <td>Rahul</td>
+                <td>ECE</td>
+                <td>60</td>
+                <td>Pass</td>
+            </tr>
+            <tr data-class="CSE-A">
+                <td>Priya</td>
+                <td>CSE-A</td>
+                <td>45</td>
+                <td>Fail</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button onclick="downloadReport()">Download Report</button>
+</section>
+
+<footer>
+    <p>© 2026 College Dashboard</p>
+</footer>
+
+<script src="ins_report.js"></script>
+</body>
+</html>

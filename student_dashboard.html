@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Dashboard</title>
+<link rel="stylesheet" href="student_dashboard.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>Student Panel</h2>
+        <ul>
+            <li onclick="loadContent('profile')">👤 Profile</li>
+            <li onclick="loadContent('documents')">📄 My Documents</li>
+            <li onclick="loadContent('assignments')">📚 Assignments</li>
+            <li onclick="loadContent('mock')">🎤 Mock Interview</li>
+            <li onclick="loadContent('analytics')">📊 Performance</li>
+            <li onclick="logout()">🚪 Logout</li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="content">
+        <h1>Welcome Student 👋</h1>
+    </div>
+
+</div>
+
+<script src="student_dashboard.js"></script>
+
+</body>
+</html>
