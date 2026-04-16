@@ -1,3 +1,4 @@
+// ✅ CLASS DATA
 const classesData = {
     "III CSE A": {
         timetable: [
@@ -27,24 +28,15 @@ const classesData = {
     }
 };
 
-// MAIN NAVIGATION
-function loadSection(section) {
+console.log("✅ STAFF JS LOADED");
+
+
+// ================= MAIN NAV =================
+window.loadSection = function(section) {
     let content = document.getElementById("content");
 
-    // PROFILE
-    if (section === "profile") {
-        content.innerHTML = `
-            <h2>👤 Staff Profile</h2>
-            <div class="card">
-                <p><b>Name:</b> Prof. Kumar</p>
-                <p><b>Department:</b> CSE</p>
-                <p><b>Email:</b> staff@college.com</p>
-            </div>
-        `;
-    }
-
-    // MY CLASSES
-    else if (section === "class") {
+    // 🏫 MY CLASSES
+    if (section === "class") {
         let html = `<h2>🏫 My Classes</h2>`;
 
         for (let cls in classesData) {
@@ -58,31 +50,14 @@ function loadSection(section) {
         content.innerHTML = html;
     }
 
-    // STUDENTS (ALL CLASSES)
-    else if (section === "students") {
-        let html = `<h2>👨‍🎓 All Students</h2>`;
-
-        for (let cls in classesData) {
-            html += `<div class="card"><h3>${cls}</h3><ul>`;
-
-            classesData[cls].students.forEach(s => {
-                html += `<li>${s.name} (Roll: ${s.roll})</li>`;
-            });
-
-            html += `</ul></div>`;
-        }
-
-        content.innerHTML = html;
-    }
-
-    // ASSIGNMENTS
+    // 📚 ASSIGNMENTS
     else if (section === "assignments") {
         let html = `<h2>📚 Assignments</h2>`;
 
         for (let cls in classesData) {
             html += `
                 <div class="card">
-                    <h3 onclick="assignToClass('${cls}')">${cls}</h3>
+                    <button onclick="assignToClass('${cls}')">${cls}</button>
                 </div>
             `;
         }
@@ -90,51 +65,70 @@ function loadSection(section) {
         content.innerHTML = html;
     }
 
-    // VERIFY SUBMISSIONS
+    // ✅ VERIFY SUBMISSIONS
     else if (section === "verify") {
-        content.innerHTML = `
-            <h2>✅ Verify Submissions</h2>
 
+        fetch("http://127.0.0.1:5000/submissions")
+        .then(res => res.json())
+        .then(data => {
+
+            let html = "<h2>✅ Submissions</h2>";
+
+            let hasData = false;
+
+            data.forEach(a => {
+                if (a.submissions.length > 0) {
+                    hasData = true;
+
+                    a.submissions.forEach(s => {
+                        html += `
+                            <div class="card">
+                                <p><b>${s.student}</b></p>
+                                <p>${a.title}</p>
+                                <pre>${s.code}</pre>
+                            </div>
+                        `;
+                    });
+                }
+            });
+
+            if (!hasData) {
+                html += "<p>No submissions yet</p>";
+            }
+
+            content.innerHTML = html;
+        })
+        .catch(() => {
+            content.innerHTML = "<p>❌ Error loading submissions</p>";
+        });
+    }
+
+    // 📊 ANALYTICS
+    else if (section === "analytics") {
+        content.innerHTML = `
+            <h2>📊 Analytics</h2>
             <div class="card">
-                <p><b>Student:</b> Hari</p>
-                <p><b>Assignment:</b> AI Report</p>
-                <a href="#">📄 View PDF</a><br><br>
-                <button onclick="approve()">Approve & Sign</button>
-                <button onclick="reject()">Reject</button>
+                <p>Coming soon...</p>
             </div>
         `;
     }
+};
 
-    // ANALYTICS
-   else if (section === "analytics") {
-    content.innerHTML = `
-        <h2>📊 Analytics Dashboard</h2>
 
-        <div class="card">
-            <canvas id="barChart"></canvas>
-        </div>
-
-        <div class="card">
-            <canvas id="pieChart"></canvas>
-        </div>
-    `;
-
-    loadCharts();
-}
-}
-
-// VIEW CLASS DETAILS
-function viewClass(className) {
+// ================= VIEW CLASS =================
+window.viewClass = function(className) {
     let data = classesData[className];
 
-    let studentsList = data.students.map(s => 
+    let students = data.students.map(s =>
         `<li>${s.name} (Roll: ${s.roll})</li>`
     ).join("");
 
-    let timetable = data.timetable.map(t => `<li>${t}</li>`).join("");
+    let timetable = data.timetable.map(t =>
+        `<li>${t}</li>`
+    ).join("");
 
     document.getElementById("content").innerHTML = `
-        <h2>🏫 ${className}</h2>
+        <h2>${className}</h2>
 
         <div class="card">
             <h3>📅 Timetable</h3>
@@ -143,70 +137,52 @@ function viewClass(className) {
 
         <div class="card">
             <h3>👨‍🎓 Students</h3>
-            <ul>${studentsList}</ul>
+            <ul>${students}</ul>
         </div>
     `;
-}
+};
 
-// ASSIGN TO CLASS
-function assignToClass(className) {
-    let students = classesData[className].students;
 
-    let checkboxes = students.map(s => `
-        <label>
-            <input type="checkbox" value="${s.name}"> ${s.name}
-        </label><br>
-    `).join("");
-
+// ================= ASSIGN =================
+window.assignToClass = function(className) {
     document.getElementById("content").innerHTML = `
         <h2>📚 Assign - ${className}</h2>
 
-        <div class="card">
-            <input type="text" id="title" placeholder="Assignment Title"><br><br>
-            <textarea id="desc" placeholder="Description"></textarea><br><br>
+        <input id="title" placeholder="Assignment Title"><br><br>
+        <textarea id="desc" placeholder="Description"></textarea><br><br>
 
-            <h4>Select Students:</h4>
-            <label>
-                <input type="checkbox" onclick="selectAll(this)"> Assign to All
-            </label><br><br>
-
-            ${checkboxes}
-
-            <br>
-            <button onclick="submitAssignment('${className}')">Assign</button>
-        </div>
+        <button onclick="submitAssignment('${className}')">Assign</button>
     `;
-}
+};
 
-// SELECT ALL
-function selectAll(source) {
-    let checkboxes = document.querySelectorAll("input[type='checkbox']");
-    checkboxes.forEach(cb => cb.checked = source.checked);
-}
 
-// SUBMIT ASSIGNMENT
-function submitAssignment(className) {
+// ================= SUBMIT ASSIGNMENT =================
+window.submitAssignment = function(className) {
     let title = document.getElementById("title").value;
     let desc = document.getElementById("desc").value;
 
-    let selected = [];
-    document.querySelectorAll("input[type='checkbox']:checked").forEach(cb => {
-        if (cb.value !== "on") selected.push(cb.value);
-    });
+    fetch("http://127.0.0.1:5000/assign", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            class: className,
+            title: title,
+            desc: desc,
+            students: ["Hari"] // later dynamic
+        })
+    })
+    .then(res => res.json())
+    .then(() => {
+        alert("✅ Assignment Assigned");
+        loadSection("assignments");
+    })
+    .catch(() => alert("❌ Error assigning"));
+};
 
-    alert(`Assignment "${title}" sent to ${selected.length} students in ${className}`);
-}
 
-// VERIFY ACTIONS
-function approve() {
-    alert("✅ Assignment Approved & Digitally Signed");
-}
-
-function reject() {
-    alert("❌ Assignment Rejected");
-}
-
-// LOGOUT
-function logout() {
+// ================= LOGOUT =================
+window.logout = function() {
     window.location.href = "mainpage.html";
-}
+};

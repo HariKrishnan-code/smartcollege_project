@@ -1,8 +1,12 @@
+from flask_cors import CORS
+from assignment_routes import assignment_bp
 from flask import Flask, request, jsonify, render_template
 import subprocess
 import os
 
 app = Flask(__name__)
+CORS(app)
+app.register_blueprint(assignment_bp)
 
 
 # 🏠 Home Page
