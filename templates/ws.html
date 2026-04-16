@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mini IDE</title>
+<link rel="stylesheet" href="ws.css">
+</head>
+
+<body>
+
+<h2>💻 Python Coding IDE</h2>
+
+<div id="editor"></div>
+
+<textarea id="input" placeholder="Enter input (optional)"></textarea>
+
+<button onclick="runCode()">▶ Run Code</button>
+<button onclick="saveCode()">💾 Save Code</button>
+
+<h3>Output:</h3>
+<pre id="output"></pre>
+
+<script src="https://unpkg.com/monaco-editor@latest/min/vs/loader.js"></script>
+<script src="ws.js"></script>
+
+</body>
+</html>

@@ -23,16 +23,17 @@ function loadContent(section) {
     }
 
     else if (section === "assignments") {
-        content.innerHTML = `
-            <h2>📚 Assignments</h2>
-            <div class="card">
-                <p>No assignments yet</p>
-            </div>
-            <div>
-                <button onclick="startTyping()">TYPE ASSIGNMENT</button>
-            </div>
-        `;
-    }
+    content.innerHTML = `
+        <h2>📚 Assignments</h2>
+
+        <div class="card">
+            <p>Select Programming Workspace</p>
+
+            <button onclick="openIDE('python')">🐍 Python IDE</button>
+            <button onclick="openIDE('java')">☕ Java IDE</button>
+        </div>
+    `;
+}
 
     else if (section === "mock") {
         content.innerHTML = `
@@ -63,4 +64,14 @@ function logout() {
 }
  function startTyping() {
     window.location.href = "typing_workspace.html";
+}
+function openIDE(type) {
+    if (type === "python") {
+        window.location.href = "http://127.0.0.1:5001"; 
+        // your Python IDE port
+    } 
+    else if (type === "java") {
+        window.location.href = "http://127.0.0.1:5000"; 
+        // your Java IDE port
+    }
 }
