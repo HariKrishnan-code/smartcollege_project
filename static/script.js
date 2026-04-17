@@ -91,3 +91,23 @@ document.addEventListener("visibilitychange", () => {
 
     if (editor) editor.setValue("");
 });
+function submitCode() {
+    let code = editor.getValue();
+    let title = localStorage.getItem("assignmentTitle");
+
+    fetch("http://127.0.0.1:5000/submit", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            title: title,
+            student: "Hari",
+            code: code
+        })
+    })
+    .then(res => res.json())
+    .then(() => {
+        alert("✅ Submitted Successfully");
+    });
+}

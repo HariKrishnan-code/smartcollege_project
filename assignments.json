@@ -12,5 +12,52 @@
                 "code": "KUKJ"
             }
         ]
+    },
+    {
+        "class": "II CSE B",
+        "title": "gfnghjyu",
+        "desc": "tjyujty",
+        "students": [
+            "Hari"
+        ],
+        "submissions": [
+            {
+                "student": "Hari",
+                "code": "jjuj"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "class": "III CSE A",
+        "title": "write a code to add two numbers using python",
+        "desc": "write and submit",
+        "type": "python",
+        "students": [
+            "Hari"
+        ],
+        "submissions": []
+    },
+    {
+        "id": 3,
+        "class": "III CSE A",
+        "title": "ggrh",
+        "desc": "hrhtyhty",
+        "type": "java",
+        "students": [
+            "Hari"
+        ],
+        "submissions": []
+    },
+    {
+        "id": 4,
+        "class": "III CSE A",
+        "title": "java coding fejkfrekjf",
+        "desc": "vbrgrtgrtgtrgrtghtg",
+        "type": "java",
+        "students": [
+            "Hari"
+        ],
+        "submissions": []
     }
 ]

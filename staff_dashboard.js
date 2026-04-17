@@ -84,7 +84,8 @@ window.loadSection = function(section) {
                         html += `
                             <div class="card">
                                 <p><b>${s.student}</b></p>
-                                <p>${a.title}</p>
+                                <p><b>Title:</b> ${a.title}</p>
+                                <p><b>Type:</b> ${a.type}</p>
                                 <pre>${s.code}</pre>
                             </div>
                         `;
@@ -148,18 +149,32 @@ window.assignToClass = function(className) {
     document.getElementById("content").innerHTML = `
         <h2>📚 Assign - ${className}</h2>
 
-        <input id="title" placeholder="Assignment Title"><br><br>
-        <textarea id="desc" placeholder="Description"></textarea><br><br>
+     <input id="title" placeholder="Assignment Title"><br><br>
+    <textarea id="desc" placeholder="Description"></textarea><br><br>
 
-        <button onclick="submitAssignment('${className}')">Assign</button>
+<!-- 🔥 NEW: Assignment Type -->
+<select id="type">
+    <option value="python">🐍 Python</option>
+    <option value="java">☕ Java</option>
+    <option value="typing">⌨️ Typing</option>
+</select><br><br>
+
+<button onclick="submitAssignment('${className}')">Assign</button>
     `;
 };
 
 
 // ================= SUBMIT ASSIGNMENT =================
 window.submitAssignment = function(className) {
-    let title = document.getElementById("title").value;
-    let desc = document.getElementById("desc").value;
+    let title = document.getElementById("title").value.trim();
+    let desc = document.getElementById("desc").value.trim();
+    let type = document.getElementById("type").value;
+
+    // ❗ VALIDATION
+    if (!title || !desc) {
+        alert("⚠️ Please fill all fields");
+        return;
+    }
 
     fetch("http://127.0.0.1:5000/assign", {
         method: "POST",
@@ -170,7 +185,8 @@ window.submitAssignment = function(className) {
             class: className,
             title: title,
             desc: desc,
-            students: ["Hari"] // later dynamic
+            type: type,
+            students: ["Hari"]
         })
     })
     .then(res => res.json())

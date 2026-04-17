@@ -1,6 +1,7 @@
 function loadContent(section) {
     let content = document.getElementById("content");
 
+    // ================= PROFILE =================
     if (section === "profile") {
         content.innerHTML = `
             <h2>👤 Profile</h2>
@@ -12,6 +13,7 @@ function loadContent(section) {
         `;
     }
 
+    // ================= DOCUMENTS =================
     else if (section === "documents") {
         content.innerHTML = `
             <h2>📄 My Documents</h2>
@@ -21,16 +23,19 @@ function loadContent(section) {
         `;
     }
 
+    // ================= ASSIGNMENTS =================
     else if (section === "assignments") {
         content.innerHTML = `
             <h2>📚 Assignments</h2>
 
+            <!-- Manual IDE Access -->
             <div class="card">
                 <button onclick="openIDE('python')">🐍 Python IDE</button>
                 <button onclick="openIDE('java')">☕ Java IDE</button>
                 <button onclick="openIDE('typing')">⌨️ Typing</button>
             </div>
 
+            <!-- Assignment List -->
             <div id="assignmentList">
                 <p>Loading...</p>
             </div>
@@ -44,51 +49,53 @@ function loadContent(section) {
 
             if (data.length === 0) {
                 html = "<p>No assignments</p>";
-            } else {
+            } 
+            else {
                 data.forEach(a => {
                     html += `
                         <div class="card">
                             <h3>${a.title}</h3>
                             <p>${a.desc}</p>
-                            <button onclick="openSubmit('${a.title}')">Submit</button>
+                            <p><b>Type:</b> ${a.type}</p>
+
+                            <button onclick="openAssignment('${a.title}', '${a.type}')">
+                                🚀 Open Assignment
+                            </button>
                         </div>
                     `;
                 });
             }
 
             document.getElementById("assignmentList").innerHTML = html;
+        })
+        .catch(() => {
+            document.getElementById("assignmentList").innerHTML = "<p>❌ Error loading assignments</p>";
         });
     }
 }
 
-function openSubmit(title) {
-    document.getElementById("content").innerHTML = `
-        <h2>${title}</h2>
-        <textarea id="code"></textarea>
-        <br><br>
-        <button onclick="submitWork('${title}')">Submit</button>
-    `;
+///////////////////////////////////////////////////////////
+// ✅ OPEN ASSIGNMENT (MAIN LOGIC)
+///////////////////////////////////////////////////////////
+function openAssignment(title, type) {
+
+    // Save assignment title (used in IDE submission)
+    localStorage.setItem("assignmentTitle", title);
+
+    if (type === "python") {
+        window.location.href = "http://127.0.0.1:5001";
+    } 
+    else if (type === "java") {
+        window.location.href = "http://127.0.0.1:5000";
+    } 
+    else {
+        window.location.href = "typing_workspace.html";
+    }
 }
 
-function submitWork(title) {
-    let code = document.getElementById("code").value;
-
-    fetch("http://127.0.0.1:5000/submit", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-            title: title,
-            student: "Hari",
-            code: code
-        })
-    })
-    .then(res => res.json())
-    .then(() => {
-        alert("Submitted");
-        loadContent("assignments");
-    });
-}
-
+///////////////////////////////////////////////////////////
+// ✅ MANUAL IDE OPEN (NO CHANGE)
+///////////////////////////////////////////////////////////
 function openIDE(type) {
     if (type === "python") {
         window.location.href = "http://127.0.0.1:5001";
@@ -99,4 +106,11 @@ function openIDE(type) {
     else {
         window.location.href = "typing_workspace.html";
     }
+}
+
+///////////////////////////////////////////////////////////
+// ✅ LOGOUT (NO CHANGE)
+///////////////////////////////////////////////////////////
+function logout() {
+    window.location.href = "mainpage.html";
 }
