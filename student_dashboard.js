@@ -75,18 +75,21 @@ function loadContent(section) {
 }
 
 ///////////////////////////////////////////////////////////
-// ✅ OPEN ASSIGNMENT (MAIN LOGIC)
+// ✅ OPEN ASSIGNMENT (FIXED)
 ///////////////////////////////////////////////////////////
 function openAssignment(title, type) {
 
-    // Save assignment title (used in IDE submission)
-    localStorage.setItem("assignmentTitle", title);
+    if (!title) {
+        alert("❌ Assignment not found");
+        return;
+    }
 
+    // ✅ PASS VIA URL
     if (type === "python") {
-        window.location.href = "http://127.0.0.1:5001";
+        window.location.href = `http://127.0.0.1:5000/python?title=${encodeURIComponent(title)}`;
     } 
     else if (type === "java") {
-        window.location.href = "http://127.0.0.1:5000";
+        window.location.href = `http://127.0.0.1:5000/?title=${encodeURIComponent(title)}`;
     } 
     else {
         window.location.href = "typing_workspace.html";
@@ -94,14 +97,14 @@ function openAssignment(title, type) {
 }
 
 ///////////////////////////////////////////////////////////
-// ✅ MANUAL IDE OPEN (NO CHANGE)
+// ✅ MANUAL IDE OPEN (FIXED PORT)
 ///////////////////////////////////////////////////////////
 function openIDE(type) {
     if (type === "python") {
-        window.location.href = "http://127.0.0.1:5001";
+        window.location.href = "http://127.0.0.1:5000/python";
     } 
     else if (type === "java") {
-        window.location.href = "http://127.0.0.1:5000";
+        window.location.href = "http://127.0.0.1:5000/";
     } 
     else {
         window.location.href = "typing_workspace.html";
@@ -109,7 +112,7 @@ function openIDE(type) {
 }
 
 ///////////////////////////////////////////////////////////
-// ✅ LOGOUT (NO CHANGE)
+// ✅ LOGOUT
 ///////////////////////////////////////////////////////////
 function logout() {
     window.location.href = "mainpage.html";

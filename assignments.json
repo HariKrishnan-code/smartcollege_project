@@ -59,5 +59,49 @@
             "Hari"
         ],
         "submissions": []
+    },
+    {
+        "id": 5,
+        "class": "III CSE A",
+        "title": "new assignment",
+        "desc": "freerg",
+        "type": "python",
+        "students": [
+            "Hari"
+        ],
+        "submissions": []
+    },
+    {
+        "id": 6,
+        "class": "III CSE A",
+        "title": "hari",
+        "desc": "fgerger",
+        "type": "python",
+        "students": [
+            "Hari"
+        ],
+        "submissions": []
+    },
+    {
+        "id": 7,
+        "class": "III CSE A",
+        "title": "new test nn",
+        "desc": "jhjhgh",
+        "type": "java",
+        "students": [
+            "Hari"
+        ],
+        "submissions": []
+    },
+    {
+        "id": 8,
+        "class": "III CSE A",
+        "title": "newwwwwwww",
+        "desc": "dfvfdvgdfg",
+        "type": "python",
+        "students": [
+            "Hari"
+        ],
+        "submissions": []
     }
 ]

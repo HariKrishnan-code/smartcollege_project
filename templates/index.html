@@ -11,14 +11,22 @@
 
 <div id="editor"></div>
 
+<!-- 🔥 ADD THIS (optional but important for future) -->
+<textarea id="input" placeholder="Enter input (optional)"></textarea>
+
 <button onclick="runCode()">▶ Run Code</button>
-<button onclick="submitCode()">📤 Submit</button>
+<button onclick="submitCode()">📤 Submit Assignment</button>
 
 <h3>Output:</h3>
 <pre id="output"></pre>
 
 <script src="https://unpkg.com/monaco-editor@latest/min/vs/loader.js"></script>
 <script src="/static/script.js"></script>
+
+<!-- 🔥 DEBUG -->
+<script>
+    console.log("Assignment:", localStorage.getItem("assignmentTitle"));
+</script>
 
 </body>
 </html>

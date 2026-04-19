@@ -1,3 +1,7 @@
+function getAssignmentTitle() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("title");
+}
 let editor;
 
 require.config({
@@ -12,6 +16,8 @@ require(["vs/editor/editor.main"], function () {
         automaticLayout: true
     });
 
+   
+
     document.addEventListener("visibilitychange", () => {
         if (document.hidden) {
             alert("⚠️ Tab switching is not allowed!");
@@ -24,7 +30,7 @@ async function runCode() {
     outputBox.innerText = "⏳ Running...";
 
     try {
-        let response = await fetch("/run", {
+        let response = await fetch("/run_python", {   // ✅ FIXED
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -35,93 +41,45 @@ async function runCode() {
             })
         });
 
-        // 🔥 IMPORTANT FIX (prevents JSON error)
         if (!response.ok) {
             let text = await response.text();
             throw new Error(text);
         }
 
         let data = await response.json();
-
         outputBox.innerText = data.output || "⚠️ No output";
 
     } catch (err) {
         outputBox.innerText = "❌ Error: " + err.message;
     }
-
 }
 
-  function saveCode() {
+function saveCode() {
     const code = editor.getValue();
-    const lang = document.getElementById("language")?.value || "python";
-
-    // 📄 Set file extension
-    let extension = "txt";
-
-    if (lang === "python") extension = "py";
-    else if (lang === "c") extension = "c";
-    else if (lang === "cpp") extension = "cpp";
-    else if (lang === "java") extension = "java";
-
-    // 📄 Create file
     const blob = new Blob([code], { type: "text/plain" });
 
-    // 📥 Create download link
     const a = document.createElement("a");
     a.href = URL.createObjectURL(blob);
-    let filename = prompt("Enter file name:", "my_code");
-    if (!filename) filename = "my_code";
+    let filename = prompt("Enter file name:", "my_code") || "my_code";
 
-    a.download = filename + "." + extension;
+    a.download = filename + ".py";
 
-    // 🔽 Trigger download
     document.body.appendChild(a);
     a.click();
-
-    // 🧹 Cleanup
     document.body.removeChild(a);
 }
-// 🔒 Disable keyboard shortcuts
-document.addEventListener("keydown", function (e) {
 
-    // Block Ctrl+C, Ctrl+V, Ctrl+X, Ctrl+A
-    if (e.ctrlKey && ["c", "v", "x", "a"].includes(e.key.toLowerCase())) {
-        e.preventDefault();
-    }
-
-    // Block Ctrl+Shift+I (DevTools)
-    if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") {
-        e.preventDefault();
-    }
-
-    // Block F12
-    if (e.key === "F12") {
-        e.preventDefault();
-    }
-});
-
-
-// 🔒 Disable right click
-document.addEventListener("contextmenu", function (e) {
-    e.preventDefault();
-});
-
-
-// 🔒 Disable paste
-document.addEventListener("paste", function (e) {
-    e.preventDefault();
-});
-
-
-// 🔒 Disable drag & drop
-document.addEventListener("drop", function (e) {
-    e.preventDefault();
-});
-function submitCode() {
+// 🔥 FINAL SUBMIT FIX
+async function submitCode() {
     let code = editor.getValue();
-    let title = localStorage.getItem("assignmentTitle");
+    let title = getAssignmentTitle(); 
 
-    fetch("http://127.0.0.1:5000/submit", {
+    if (!title) {
+        alert("⚠️ No assignment selected");
+        return;
+    }
+
+    let res = await fetch("http://127.0.0.1:5000/submit", {   // ✅ CORRECT ROUTE
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -131,10 +89,8 @@ function submitCode() {
             student: "Hari",
             code: code
         })
-    })
-    .then(res => res.json())
-    .then(() => {
-        alert("✅ Submitted Successfully");
     });
-}
 
+    await res.json();
+    alert("✅ Submitted Successfully");
+}
