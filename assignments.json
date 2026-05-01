@@ -114,5 +114,16 @@
             "Hari"
         ],
         "submissions": []
+    },
+    {
+        "id": 10,
+        "class": "III CSE A",
+        "title": "deff",
+        "desc": "efff",
+        "type": "python",
+        "students": [
+            "Hari"
+        ],
+        "submissions": []
     }
 ]
