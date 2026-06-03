@@ -1,5 +1,5 @@
 from flask_cors import CORS
-from assignment_routes import assignment_bp
+from smartcollege_project.BACKEND.assignment_routes import assignment_bp
 from flask import Flask, request, jsonify, render_template
 import subprocess
 import os

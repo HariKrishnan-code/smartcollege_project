@@ -1,0 +1,28 @@
+services:
+  frontend:
+    image: sms-frontend:latest   
+    container_name: sms_frontend_container
+    restart: always
+    volumes:
+      - storage/data
+    ports:
+      - "6000:5500"
+    networks:
+      - project
+
+  backend:
+    image: sms_backend:latest  
+    container_name: sms_backend_container
+    restart: always
+    volumes:
+      - storage/data
+    ports:
+      - "5002:5000"
+    networks:
+      - project
+
+networks:
+  project:
+    driver: bridge
+volumes:
+  storage:

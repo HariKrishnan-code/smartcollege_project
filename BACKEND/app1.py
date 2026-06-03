@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
-from assignment_routes import assignment_bp
+from smartcollege_project.BACKEND.assignment_routes import assignment_bp
 import subprocess
 import tempfile
 import os

@@ -1,13 +1,15 @@
-FROM python:3.12
+FROM nginx:alpine AS frontend
 
-WORKDIR /smsproject
+COPY FRONTEND/ /usr/share/nginx/html/
 
-COPY requirements.txt .
-
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY . .
 
 EXPOSE 5500
 
+FROM python:3.10-slim AS backend
+WORKDIR /sms_backend
+COPY BACKEND/ .
+RUN pip install --no-cache-dir -r requirements.txt
+EXPOSE 5500
 CMD ["python", "app1.py"]
+
+

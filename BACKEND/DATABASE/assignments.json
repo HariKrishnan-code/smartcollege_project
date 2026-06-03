@@ -125,5 +125,16 @@
             "Hari"
         ],
         "submissions": []
+    },
+    {
+        "id": 11,
+        "class": "III CSE A",
+        "title": "write addition of 2 numbers program",
+        "desc": "write in python",
+        "type": "python",
+        "students": [
+            "Hari"
+        ],
+        "submissions": []
     }
 ]
