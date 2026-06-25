@@ -12,20 +12,20 @@ function showLoader(){
 function goStudent(){
     showLoader();
     setTimeout(()=>{
-        window.location.href="studentlogin.html";
-    },1500);
+        window.location.href="../HTML/studentlogin.html";
+    },1000);
 }
 
 function goStaff(){
     showLoader();
     setTimeout(()=>{
-        window.location.href="stafflogin.html";
-    },1500);
+        window.location.href="../HTML/stafflogin.html";
+    },1000);
 }
 function goInstitution() {
     document.getElementById("loader").style.display = "flex";
 
     setTimeout(() => {
-        window.location.href = "institution login.html";
+        window.location.href = "../HTML/institution login.html";
     }, 1000);
 }

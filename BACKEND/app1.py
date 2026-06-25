@@ -1,11 +1,18 @@
 from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
-from smartcollege_project.BACKEND.assignment_routes import assignment_bp
+from assignment_routes import assignment_bp
 import subprocess
 import tempfile
 import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    template_folder=os.path.join(BASE_DIR, "..", "templates"),
+    static_folder=os.path.join(BASE_DIR, "..", "static")
+)
+print("Template Folder:", app.template_folder)
+print("Static Folder:", app.static_folder)
 CORS(app)
 
 # ✅ REGISTER ASSIGNMENT ROUTES
