@@ -4,6 +4,8 @@ from assignment_routes import assignment_bp
 import subprocess
 import tempfile
 import os
+from reference_routes import reference_bp
+from ai_routes import ai_bp
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 app = Flask(
@@ -17,6 +19,8 @@ CORS(app)
 
 # ✅ REGISTER ASSIGNMENT ROUTES
 app.register_blueprint(assignment_bp)
+app.register_blueprint(reference_bp)
+app.register_blueprint(ai_bp)
 
 
 # ================= HOME ROUTES =================
@@ -118,6 +122,20 @@ def run_python():
 def violation():
     print("⚠️ Tab switch detected")
     return jsonify({"status": "ok"})
+
+# ================= TEMP STUDENT LOGIN =================
+
+@app.route('/student_login', methods=['POST'])
+def student_login():
+
+    # Temporary login for development
+    # Authentication will be added later
+
+    return jsonify({
+        "success": True,
+        "student_id": "23ucs014",
+        "name": "Hari"
+    })
 
 
 # ================= RUN =================

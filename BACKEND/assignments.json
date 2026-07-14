@@ -20,5 +20,104 @@
             "Hari"
         ],
         "submissions": []
+    },
+    {
+        "id": 2,
+        "class": "III CSE A",
+        "title": "python assignmennt",
+        "desc": "mani",
+        "type": "python",
+        "students": [
+            "Hari"
+        ],
+        "submissions": []
+    },
+    {
+        "id": 3,
+        "class": "III CSE A",
+        "title": "new",
+        "desc": "new one",
+        "type": "handwritten",
+        "students": [
+            "Hari"
+        ],
+        "submissions": []
+    },
+    {
+        "id": 4,
+        "class": "III CSE A",
+        "title": "as1",
+        "desc": "wef",
+        "type": "python",
+        "students": [
+            "Hari"
+        ],
+        "submissions": []
+    },
+    {
+        "id": 5,
+        "class": "III CSE A",
+        "title": "as1",
+        "desc": "wef",
+        "type": "python",
+        "students": [
+            "Hari"
+        ],
+        "submissions": []
+    },
+    {
+        "id": 6,
+        "class": "III CSE A",
+        "title": "as1",
+        "desc": "wef",
+        "type": "python",
+        "students": [
+            "Hari"
+        ],
+        "submissions": []
+    },
+    {
+        "id": 7,
+        "class": "III CSE A",
+        "title": "as1",
+        "desc": "wef",
+        "type": "python",
+        "students": [
+            "Hari"
+        ],
+        "submissions": []
+    },
+    {
+        "id": 8,
+        "class": "III CSE A",
+        "title": "as1",
+        "desc": "wef",
+        "type": "python",
+        "students": [
+            "Hari"
+        ],
+        "submissions": []
+    },
+    {
+        "id": 9,
+        "class": "III CSE A",
+        "title": "as1",
+        "desc": "wef",
+        "type": "python",
+        "students": [
+            "Hari"
+        ],
+        "submissions": []
+    },
+    {
+        "id": 10,
+        "class": "III CSE A",
+        "title": "sdf",
+        "desc": "rgrwef",
+        "type": "handwritten",
+        "students": [
+            "Hari"
+        ],
+        "submissions": []
     }
 ]
