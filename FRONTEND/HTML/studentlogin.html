@@ -13,13 +13,23 @@
     <div class="login-box">
         <h1>Students Login</h1>
 
-        <form>
+        <form onsubmit="return false;">
             <div class="input-box">
-                <input type="text" placeholder="Username" required>
+<input
+    type="text"
+    id="username"
+    placeholder="Username"
+    required
+>
             </div>
 
             <div class="input-box">
-                <input type="password" placeholder="Password" required>
+               <input
+    type="password"
+    id="password"
+    placeholder="Password"
+    required
+>
             </div>
 
             <div class="options">
@@ -34,11 +44,57 @@
             </p>
         </form>
     </div>
-    <script>
-        function studentdashboard() {
-            window.location.href = "student_dashboard.html";
+ <script>
+
+async function studentdashboard(){
+
+    const username =
+        document.getElementById("username").value;
+
+    const password =
+        document.getElementById("password").value;
+
+    const response = await fetch(
+        "http://127.0.0.1:5000/student_login",
+        {
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                username,
+                password
+            })
         }
-    </script>
+    );
+
+    const data = await response.json();
+
+    if(data.success){
+
+        localStorage.setItem(
+            "student_id",
+            data.student_id
+        );
+
+        localStorage.setItem(
+            "student_name",
+            data.name
+        );
+
+        window.location.href =
+            "student_dashboard.html";
+
+    }
+    else{
+
+        alert(data.message);
+
+    }
+
+}
+
+</script>
 
 </body>
 </html>

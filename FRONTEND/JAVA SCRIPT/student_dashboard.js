@@ -25,6 +25,7 @@ function loadContent(section) {
 
     // ================= ASSIGNMENTS =================
     else if (section === "assignments") {
+
         content.innerHTML = `
             <h2>📚 Assignments</h2>
 
@@ -48,72 +49,233 @@ function loadContent(section) {
             let html = "";
 
             if (data.length === 0) {
+
                 html = "<p>No assignments</p>";
-            } 
-            else {
+
+            } else {
+
                 data.forEach(a => {
+
                     html += `
                         <div class="card">
+
                             <h3>${a.title}</h3>
+
                             <p>${a.desc}</p>
+
                             <p><b>Type:</b> ${a.type}</p>
 
-                            <button onclick="openAssignment('${a.title}', '${a.type}')">
+                            <button onclick="openAssignment('${a.title}','${a.type}')">
                                 🚀 Open Assignment
                             </button>
+
+                            <br><br>
+
+                            <input
+                                type="file"
+                                id="pdf_${a.id}"
+                                accept=".pdf"
+                            >
+
+                            <button onclick="uploadAssignment(${a.id})">
+                                🤖 Upload for AI Verification
+                            </button>
+
                         </div>
                     `;
+
                 });
+
             }
 
             document.getElementById("assignmentList").innerHTML = html;
+
         })
+
         .catch(() => {
-            document.getElementById("assignmentList").innerHTML = "<p>❌ Error loading assignments</p>";
+
+            document.getElementById("assignmentList").innerHTML =
+                "<p>❌ Error loading assignments</p>";
+
         });
+
     }
 }
 
 ///////////////////////////////////////////////////////////
-// ✅ OPEN ASSIGNMENT (FIXED)
+// ✅ OPEN ASSIGNMENT
 ///////////////////////////////////////////////////////////
+
 function openAssignment(title, type) {
 
     if (!title) {
+
         alert("❌ Assignment not found");
+
         return;
+
     }
 
-    // ✅ PASS VIA URL
-    if (type === "python") {
-        window.location.href = `http://127.0.0.1:5000/python?title=${encodeURIComponent(title)}`;
-    } 
-    else if (type === "java") {
-        window.location.href = `http://127.0.0.1:5000/?title=${encodeURIComponent(title)}`;
-    } 
-    else {
-        window.location.href = "typing_workspace.html";
-    }
+   if(type==="python"){
+
+    window.location.href=
+        "http://127.0.0.1:5000/python";
+
+}
+
+else if(type==="java"){
+
+    window.location.href=
+        "http://127.0.0.1:5000/";
+
+}
+
+else if(type==="typing"){
+
+    window.location.href=
+        "typing_workspace.html";
+
+}
+
+else if(type==="handwritten"){
+
+    window.location.href=
+        "handwritten_upload.html";
+
 }
 
 ///////////////////////////////////////////////////////////
-// ✅ MANUAL IDE OPEN (FIXED PORT)
+// ✅ MANUAL IDE OPEN
 ///////////////////////////////////////////////////////////
+
 function openIDE(type) {
+
     if (type === "python") {
-        window.location.href = "http://127.0.0.1:5000/python";
-    } 
-    else if (type === "java") {
-        window.location.href = "http://127.0.0.1:5000/";
-    } 
-    else {
-        window.location.href = "typing_workspace.html";
+
+        window.location.href =
+            "http://127.0.0.1:5000/python";
+
     }
+
+    else if (type === "java") {
+
+        window.location.href =
+            "http://127.0.0.1:5000/";
+
+    }
+
+    else {
+
+        window.location.href =
+            "typing_workspace.html";
+
+    }
+
+}
+
+///////////////////////////////////////////////////////////
+// ✅ AI PDF UPLOAD
+///////////////////////////////////////////////////////////
+
+async function uploadAssignment(assignmentId) {
+
+    const file =
+        document.getElementById(
+            "pdf_" + assignmentId
+        ).files[0];
+
+    if (!file) {
+
+        alert("Please select a PDF.");
+
+        return;
+
+    }
+
+    const student_id =
+        localStorage.getItem("student_id");
+
+    const formData = new FormData();
+
+    formData.append(
+        "student_id",
+        student_id
+    );
+
+    formData.append(
+        "assignment",
+        file
+    );
+
+    formData.append(
+        "assignment_id",
+        assignmentId
+    );
+
+    try {
+
+        alert("🤖 AI Verification Started...");
+
+        const response = await fetch(
+
+            "http://127.0.0.1:5000/verify_handwriting",
+
+            {
+
+                method: "POST",
+
+                body: formData
+
+            }
+
+        );
+
+        const result = await response.json();
+
+        if (result.success) {
+
+            alert(
+
+                "✅ Verification Completed\n\n" +
+
+                "Decision : " +
+
+                result.report.decision +
+
+                "\n\nHonest Score : " +
+
+                result.report.honest_score +
+
+                "%"
+
+            );
+
+        }
+
+        else {
+
+            alert(result.message);
+
+        }
+
+    }
+
+    catch (err) {
+
+        console.error(err);
+
+        alert("Server Error");
+
+    }
+
 }
 
 ///////////////////////////////////////////////////////////
 // ✅ LOGOUT
 ///////////////////////////////////////////////////////////
+
 function logout() {
+
     window.location.href = "mainpage.html";
-}
+
+}}
